@@ -47,8 +47,12 @@ Restore it once before running the scripts:
 The local package already contains `answers.npz`, so no restore step is needed
 locally.
 
+## Public link
+
+https://github.com/djgvgc/model-agreement-two-terms
+
 ## Notes
 
-- This package is local and anonymized. A public hosting URL will be added once
-  the anonymous repository exists; no public link is claimed here yet.
+- This package is anonymized: no author name, affiliation or local path appears
+  in these files, and the repository history contains only anonymous commits.
 - All runs are CPU-only and complete in seconds.
