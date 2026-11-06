@@ -36,16 +36,14 @@ is introduced. Preprocessing is contained in `check.py`, and
 `check.py --samples <path-to-public-release>` rebuilds the table directly from
 that release.
 
-For hosting platforms that accept text files only, `answers.npz.b64` is a
-base64 copy of the same bytes (63,440 B; decode verified byte-identical).
-Restore it once before running the scripts:
+The native `answers.npz` is in this repository, so the scripts run directly
+with no restore step. For hosting platforms that accept text files only,
+`answers.npz.b64` is kept as a byte-identical text fallback (63,440 B; decode
+verified byte-identical). Decode it once only if the native file is unavailable:
 
     base64 -d answers.npz.b64 > answers.npz        # Git Bash / Linux / macOS
     # PowerShell:
     # [IO.File]::WriteAllBytes("answers.npz", [Convert]::FromBase64String((Get-Content -Raw answers.npz.b64)))
-
-The local package already contains `answers.npz`, so no restore step is needed
-locally.
 
 ## Public link
 
