@@ -32,7 +32,7 @@ plt.rcParams.update({
     "font.family": "sans-serif",
     "font.sans-serif": ["DejaVu Sans"],
     "axes.unicode_minus": False,
-    "font.size": 10.5,
+    "font.size": 8.5,
     "axes.linewidth": 0.8,
     "pdf.fonttype": 42,
 })
@@ -96,49 +96,49 @@ def draw(rows, stem="fig_one_knob", outdir=HERE):
     yg = np.array([r["pg"] for r in rows])
     st = np.array([r["pts"] for r in rows])
     sg = np.array([r["pgs"] for r in rows])
-    fig, ax = plt.subplots(1, 1, figsize=(7.4, 4.2))
+    fig, ax = plt.subplots(1, 1, figsize=(5.5, 3.1))
 
     ax.axhline(0.0, color="#999999", lw=1.0, ls=(0, (4, 4)), zorder=1)
     ax.fill_between(x, yt - st, yt + st, color="#2c5f8a", alpha=0.13,
                     linewidth=0, zorder=2)
     ax.fill_between(x, yg - sg, yg + sg, color="#c0562a", alpha=0.13,
                     linewidth=0, zorder=2)
-    ax.plot(x, yt, color="#2c5f8a", lw=2.1, marker="o", ms=4.2, zorder=4,
+    ax.plot(x, yt, color="#2c5f8a", lw=1.7, marker="o", ms=3.4, zorder=4,
             label="true difficulty table")
-    ax.plot(x, yg, color="#c0562a", lw=2.1, marker="o", ms=4.2, zorder=4,
+    ax.plot(x, yg, color="#c0562a", lw=1.7, marker="o", ms=3.4, zorder=4,
             label="difficulty re-guessed")
-    ax.plot(x, [r["should"] for r in rows], color="#777777", lw=1.5,
+    ax.plot(x, [r["should"] for r in rows], color="#777777", lw=1.3,
             ls=(0, (2, 3)), zorder=3, label="should read back")
 
     ax.annotate("no link, yet reading is negative",
-                xy=(0, rows[0]["pg"]), xytext=(0.13, rows[0]["pg"] - 0.022),
-                fontsize=9, color="#c0562a",
-                arrowprops=dict(arrowstyle="->", color="#c0562a", lw=1.0))
+                xy=(0, rows[0]["pg"]), xytext=(0.10, rows[0]["pg"] - 0.018),
+                fontsize=7.5, color="#c0562a",
+                arrowprops=dict(arrowstyle="->", color="#c0562a", lw=0.8))
     ax.annotate("a link exists, yet the reading sits near zero",
-                xy=(0.20, rows[4]["pg"]), xytext=(0.235, -0.020),
-                fontsize=9, color="#444444",
-                arrowprops=dict(arrowstyle="->", color="#888888", lw=1.0))
+                xy=(0.20, rows[4]["pg"]), xytext=(0.235, -0.026),
+                fontsize=7.5, color="#444444",
+                arrowprops=dict(arrowstyle="->", color="#888888", lw=0.8))
     ax.annotate("true reads all, re-guessed reads a third",
-                xy=(0.30, rows[5]["pt"]), xytext=(0.235, 0.152),
-                fontsize=9, color="#444444",
-                arrowprops=dict(arrowstyle="->", color="#888888", lw=1.0))
+                xy=(0.30, rows[5]["pt"]), xytext=(0.235, 0.150),
+                fontsize=7.5, color="#444444",
+                arrowprops=dict(arrowstyle="->", color="#888888", lw=0.8))
 
     ax.set_xlim(-0.02, 0.52)
     ax.set_xlabel("planted link strength (fraction of items copied)",
-                  fontsize=9.5, labelpad=8)
-    ax.set_ylabel("reading left after subtraction", fontsize=9.5, labelpad=8)
-    ax.tick_params(length=4, width=0.9)
+                  fontsize=8.5, labelpad=6)
+    ax.set_ylabel("reading left after subtraction", fontsize=8.5, labelpad=6)
+    ax.tick_params(length=3.5, width=0.9, labelsize=8)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(loc="upper left", frameon=False, fontsize=9,
-              labelspacing=0.34, borderpad=0, borderaxespad=0.2)
+    ax.legend(loc="upper left", frameon=False, fontsize=7.5,
+              labelspacing=0.3, borderpad=0, borderaxespad=0.2)
 
     fig.suptitle("One knob, one figure: turn the link from zero upwards",
-                 fontsize=12.5, y=0.99)
+                 fontsize=10.5, y=0.99)
     fig.tight_layout(rect=(0, 0, 1, 0.94))
     for ext in (".png", ".pdf"):
         p = Path(outdir) / (stem + ext)
-        fig.savefig(p, dpi=180, facecolor="white")
+        fig.savefig(p, dpi=300, facecolor="white")
         print("wrote", p)
 
 
