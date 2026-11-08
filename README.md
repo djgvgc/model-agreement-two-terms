@@ -22,11 +22,16 @@ Run `bridge.py` from this directory (it imports `minimal.py` beside it).
 - `minimal.py`: answer-known worlds (8 models, 240 items). The default run
   needs no external data; `--real` additionally uses the public table. It also
   prints the s.d. of the reported reading across the 60 worlds at each
-  difficulty spread (0.0055-0.0144): that is the shaded band in Figure 1.
+  difficulty spread (0.0055-0.0144).
 - `bridge.py`: the 3 x 2 table of readings with and without a planted 30%
   link, together with the B1-B4 checks.
-- `fig1_paper.py`: redraws Figure 1 from those numbers. It needs matplotlib
-  in addition to numpy; the scripts above stay numpy-only.
+- `one_knob.py`: draws Figure 1, the calibration curve under two reference
+  tables, and prints the table behind it (no link: -0.0026 / -0.0483; a 30\%
+  link: +0.0900 / +0.0254 from +0.0930 planted; the re-guessed curve crosses
+  zero at lambda = 0.185). It imports `minimal.py` beside it and needs
+  matplotlib in addition to numpy.
+- `fig1_paper.py`: the earlier difficulty-spread scan; this is not the figure
+  in the paper.
 - `scan_scale.py`: the scale sweep behind the read-back table in Section 2
   (share and crossing over item counts, difficulty shapes, and both plant
   definitions). It imports `minimal.py` and writes `scan_scale_results.txt`
