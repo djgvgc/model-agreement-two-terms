@@ -133,9 +133,7 @@ def draw(rows, stem="fig_one_knob", outdir=HERE):
     ax.legend(loc="upper left", frameon=False, fontsize=7.5,
               labelspacing=0.3, borderpad=0, borderaxespad=0.2)
 
-    fig.suptitle("One knob, one figure: turn the link from zero upwards",
-                 fontsize=10.5, y=0.99)
-    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    fig.tight_layout()
     for ext in (".png", ".pdf"):
         p = Path(outdir) / (stem + ext)
         fig.savefig(p, dpi=300, facecolor="white")
