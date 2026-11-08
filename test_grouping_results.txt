@@ -1,0 +1,19 @@
+table: 42 models x 8707 items, 861 pairs
+SELF-CHECK (must match the paper's group means and counts)
+  one checkpoint     n= 19  mean +0.0304  all positive: True
+  shared teacher     n= 11  mean +0.0059  all positive: False
+  same maker         n=135  mean +0.0054  all positive: False
+  different makers   n=696  mean -0.0074  all positive: False
+  gap (one checkpoint - different makers) = +0.0378
+  paper reports +0.0304 / +0.0059 / +0.0054 / -0.0074 and gap +0.0378
+
+PAIR-LEVEL bootstrap (pairs treated as independent; the paper's version)
+  gap 95% interval [+0.0309, +0.0456]  (paper: [+0.0311, +0.0453])
+
+MODEL-LEVEL cluster bootstrap (resample models, keep shared-model dependence)
+  one checkpoint     mean +0.0304  95% interval [+0.0189, +0.0430]
+  shared teacher     mean +0.0059  95% interval [-0.0041, +0.0273]
+  same maker         mean +0.0054  95% interval [-0.0021, +0.0129]
+  different makers   mean -0.0074  95% interval [-0.0125, -0.0029]
+  gap                 mean +0.0378  95% interval [+0.0265, +0.0511]
+  fraction of resamples with gap <= 0: 0.0000

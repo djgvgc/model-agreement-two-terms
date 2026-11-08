@@ -111,7 +111,8 @@ def run_scan():
             d.append(both(B, fit_rasch(B)))
         rows.append((spread, float(np.mean(a)), float(np.mean(b)),
                      float(np.mean(c)), float(np.mean(d)),
-                     float(np.std(a)), float(np.std(c))))
+                     float(np.std(a)), float(np.std(b)),
+                     float(np.std(c)), float(np.std(d))))
     return rows
 
 
@@ -316,6 +317,12 @@ def main():
     p1 = gap < 0.01 and flat < 0.01 and rise > 0.08
     print("  max |strength - arithmetic| = %.4f | max |both(true)| = %.4f | rise = %+.4f"
           % (gap, flat, rise))
+    print("  spread across the %d worlds (s.d.): strength %.4f-%.4f | arithmetic %.4f-%.4f"
+          " | both(true) %.4f-%.4f | both(guess) %.4f-%.4f"
+          % (W, min(r[5] for r in rows), max(r[5] for r in rows),
+             min(r[6] for r in rows), max(r[6] for r in rows),
+             min(r[7] for r in rows), max(r[7] for r in rows),
+             min(r[8] for r in rows), max(r[8] for r in rows)))
     print("  P1: %s" % ("holds" if p1 else "BROKEN"))
 
     print("\nP2  plant a 30% link, then read it back")
